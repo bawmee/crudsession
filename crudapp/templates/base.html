@@ -1,0 +1,31 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Gothic+A1|Pacifico|Permanent+Marker|Margarine|Nanum+Gothic" rel="stylesheet">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href='{% static "css/style.css" %}'>
+    
+    <title>네번째세션-실습자료</title>
+</head>
+    <body>
+    
+        <div class="container">
+            <div class="ban"><a href="/"><h1 class="cre">CRUD 부수기🔨</h1></a></div>
+            <br><br><br><br>
+        
+            <br>
+                {% block content %}
+    
+    
+                {% endblock %} 
+
+        </div>
+        
+    </body>
