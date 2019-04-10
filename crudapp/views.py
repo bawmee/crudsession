@@ -1,5 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect 
 from django.utils import timezone
+
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+
 from .models import Blog
 
 
@@ -7,7 +11,9 @@ def index(request):
 
     blogs = Blog.objects.all
 
-    return render(request, 'index.html', {'blogs':blogs})
+    tmpb = Blog.objects
+
+    return render(request, 'index.html', {'blogs':blogs, 'tmpb':tmpb})
 
 
 def new(request):
@@ -15,6 +21,9 @@ def new(request):
         blog = Blog()
         blog.title = request.POST['title']
         blog.body = request.POST['body']
+        img = request.FILES['image']
+        fs = FileSystemStorage()
+        blog.image = fs.save(img.name, img)
         blog.date = timezone.datetime.now()
         blog.save()
 
@@ -27,6 +36,7 @@ def new(request):
 def detail(request, blog_id):
 
     blog = get_object_or_404(Blog, pk = blog_id)
+    #blog = Blog.objects.get(pk=blog_id)
 
     return render(request, 'detail.html', {'blog':blog})
 
